@@ -4,11 +4,13 @@
 #include <unordered_map>
 #include <numeric>
 #include <algorithm>
-
+#include <map>
 
 using namespace std;
 void listOperations(vector<int> arr);
 void hashOperations(vector<int> arr);
+void treeOperations(vector<int> arr);
+
 int main(int argc, char *argv[])
 {
     int num = 0;
@@ -18,16 +20,10 @@ int main(int argc, char *argv[])
     random_shuffle(arr.begin(),arr.end());
     listOperations(arr);
     hashOperations(arr);
+    treeOperations(arr);
     return 0;
 }
 void listOperations(vector<int> arr){
-//    int num = 0;
-//    srand (time(NULL));
-//    vector<int> arr;
-//    for(int i = 0; i<1000;i++){
-//          num = rand() % 100 + 1;
-//          arr.push_back(num);
-//    }
     int search = rand() % 100 + 1;
     //search
     for(int i = 0; i<1000; i++){
@@ -46,6 +42,7 @@ void listOperations(vector<int> arr){
 }
 void hashOperations(vector<int> arr){
     unordered_map<int,int> hash;
+    //initialize hash
     for(int i = 0; i<1000;i++){
           hash[i] = arr[0];
     }
@@ -55,4 +52,25 @@ void hashOperations(vector<int> arr){
         std::cout << "Not Found";
     else
         std::cout << got->first << " is " << got->second;
+    //insert
+    hash[1000] = 5555;
+    //delete
+    hash.erase(777);
+}
+void treeOperations(vector<int> arr){
+    //STL's implmentation of a map is a binary search tree
+    map<int,int> tree;
+    for(int i = 0; i<1000;i++){
+          tree[i] = arr[0];
+    }
+    //search
+    map<int,int>::const_iterator got = tree.find(444);
+    if (got == tree.end() )
+        std::cout << "Not Found";
+    else
+        std::cout << got->first << " is " << got->second;
+    //insert
+    tree[1000] = 3333;
+    //delete
+    tree.erase(345);
 }
