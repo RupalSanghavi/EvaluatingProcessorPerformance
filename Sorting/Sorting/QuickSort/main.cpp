@@ -14,7 +14,7 @@
 
 using namespace std;
 
-// http://www.algolist.net/Algorithms/Sorting/quickSort
+// http://www.algolist.net/Algorithms/Sorting/Quicksort
 void quickSort(vector<string>& v, int begin, int end) {
     int i = begin, j = end;
     string temp;
